@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 import Layout from "../components/layout"
 import PrimaryButton from "../components/PrimaryButton"
-import useStore from "../context/storeContext"
+import useStore from "../context/StoreContext"
 import useInput from "../utils/useInput"
 
 const ProductTemplate = ({ pageContext }) => {
