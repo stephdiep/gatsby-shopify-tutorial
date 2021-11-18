@@ -7,7 +7,10 @@ import { Link } from "gatsby"
 const Header = ({ siteTitle }) => (
   <HeaderWrapper>
     <Link to="/" className="site-title">{siteTitle}</Link>
-    <Link to="/products">All products</Link>
+    <LinksWrapper>
+      <Link to="/products">All products</Link>
+      <Link to="/">My Cart</Link>
+    </LinksWrapper>
   </HeaderWrapper>
 )
 
@@ -44,4 +47,9 @@ const HeaderWrapper = styled.header`
       text-decoration: underline;
     }
   }
+`
+const LinksWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 40px;
 `
