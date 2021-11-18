@@ -1,0 +1,7 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-reactroot="">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-width="0" stroke="#265F58" fill="#98EED5" d="M6 2H18L19 4H5L6 2Z" transform="translate(2,2)"></path><path stroke-linejoin="round" stroke-linecap="round" stroke-width="1" stroke="#265F58" fill="none" d="M6 2H18L19 4H5L6 2Z"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-width="0" stroke="#265F58" fill="#98EED5" d="M7 4H17V18H7V4Z" transform="translate(2,2)"></path><path stroke-linejoin="round" stroke-linecap="round" stroke-width="1" stroke="#265F58" fill="none" d="M7 4H17V18H7V4Z"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-width="0" stroke="#265F58" fill="#98EED5" d="M7 18H17L15 22H9L7 18Z" transform="translate(2,2)"></path><path stroke-linejoin="round" stroke-linecap="round" stroke-width="1" stroke="#265F58" fill="none" d="M7 18H17L15 22H9L7 18Z"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-width="1" stroke="#265F58" d="M7 10H17"></path>
+<circle stroke-width="0" stroke="#265F58" fill="#98EED5" r="1" cy="14" cx="12" transform="translate(2,2)"></circle><circle stroke-width="1" stroke="#265F58" fill="none" r="1" cy="14" cx="12"></circle>
+</svg>
