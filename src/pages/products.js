@@ -7,7 +7,7 @@ import ProductCard from "../components/ProductCard"
 
 const Products = ({ data }) => {
 	const { nodes } = data.allShopifyProduct
-	console.log(`data`, data)
+
 	return (
 		<Layout>
 			<Wrapper>
@@ -22,19 +22,20 @@ export const query = graphql`
 	{
 		allShopifyProduct {
 			nodes {
-			title
-			shopifyId
-			handle
-			status
-			priceRangeV2 {
-				maxVariantPrice {
-				amount
+				title
+				handle
+				variants {
+        	shopifyId
+      	}
+				priceRangeV2 {
+					maxVariantPrice {
+						amount
+					}
 				}
-			}
-			description
-			images {
-				src
-			}
+				description
+				images {
+					src
+				}
 			}
 		}
 	}

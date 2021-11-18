@@ -4,9 +4,13 @@ import styled from "styled-components"
 
 import Layout from "../components/layout"
 import PrimaryButton from "../components/PrimaryButton"
+import useStore from "../context/storeContext"
+import useInput from "../utils/useInput"
 
 const ProductTemplate = ({ pageContext }) => {
   const { product } = pageContext
+  const { addVariantToCart } = useStore()
+  const bind = useInput(1)
 
   return (
     <Layout>
@@ -19,9 +23,9 @@ const ProductTemplate = ({ pageContext }) => {
           <p>{product.description}</p>
           <InputForm>
             <Subtitle><label htmlFor="qty">Quantity:</label></Subtitle>
-            <Input placeholder="1" id="qty" type="number" defaultValue={1} />
+            <Input placeholder="1" id="qty" type="number" defaultValue={1} {...bind} />
           </InputForm>
-          <PrimaryButton text="Add to cart" onClick={() => alert("Added to cart!")} />
+          <PrimaryButton text="Add to cart" onClick={() => addVariantToCart(product.variants[0]?.shopifyId, bind.value)} />
         </InfoContainer>
       </Wrapper>
     </Layout>

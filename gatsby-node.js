@@ -10,9 +10,10 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             title
-            shopifyId
             handle
-            status
+            variants {
+              shopifyId
+            }
             priceRangeV2 {
               maxVariantPrice {
                 amount

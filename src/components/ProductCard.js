@@ -1,11 +1,14 @@
 import React from 'react'
 import { navigate } from 'gatsby-link'
 import styled from "styled-components"
+import useStore from '../context/StoreContext'
 
 const ProductCard = ({ product }) => {
+  const { addVariantToCart } = useStore()
+
   return (
     <Wrapper>
-      <AddButton onClick={() => alert("Added to cart!")}><p>+</p></AddButton>
+      <AddButton onClick={() => addVariantToCart(product.variants[0]?.shopifyId, 1)}><p>+</p></AddButton>
       <ContentWrapper onClick={() => navigate(`${product.handle}`)}>
         <Image src={product.images[0]?.src} />
         <TextWrapper>

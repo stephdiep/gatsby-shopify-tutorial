@@ -17,10 +17,12 @@
     "gatsby-source-filesystem": "^4.2.0",
     "gatsby-source-shopify": "^6.2.0",
     "gatsby-transformer-sharp": "^4.2.0",
+    "isomorphic-fetch": "^3.0.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
+    "shopify-buy": "^2.13.0",
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
