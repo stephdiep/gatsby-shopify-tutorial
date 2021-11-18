@@ -10,7 +10,6 @@ const IndexPage = () => (
   <Layout>
     <Seo title="Home" />
     <ContentWrapper>
-
       <BannerImage src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80" />
       <TextWrapper>
         <Title>Start your day with a delicious cup of coffee</Title>
@@ -25,7 +24,6 @@ export default IndexPage
 
 const ContentWrapper = styled.div`
   position: relative;
-
 `
 
 const BannerImage = styled.img`

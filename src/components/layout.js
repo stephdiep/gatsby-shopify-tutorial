@@ -59,5 +59,4 @@ const Footer = styled.footer`
     a {
       color: rgba(0,0,0,0.4);
     }
-
 `
