@@ -23,8 +23,16 @@ const Layout = ({ children }) => {
       <div>
         <main>{children}</main>
         <Footer>
-          © Design+Code {new Date().getFullYear()}, built with {" "}
-          <a href="https://www.gatsbyjs.com">Gatsby</a> and <a href="https://www.shopify.com">Shopify</a>
+          <div>
+            © <a href="https://designcode.io/">Design+Code</a>, {new Date().getFullYear()}
+          </div>
+          <div>
+            Built with {" "}
+            <a href="https://www.gatsbyjs.com">Gatsby</a> and <a href="https://www.shopify.com">Shopify</a>
+          </div>
+          <div>
+            <a href="https://github.com/stephdiep/gatsby-shopify-tutorial">Source code</a>
+          </div>
         </Footer>
       </div>
     </>
@@ -43,6 +51,10 @@ const Footer = styled.footer`
     "Open Sans", "Helvetica Neue", sans-serif;
     font-size: 12px;
     color: rgba(0,0,0,0.4);
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 40px;
+    width: fit-content;
 
     a {
       color: rgba(0,0,0,0.4);
