@@ -49,6 +49,7 @@ const Image = styled.img`
   width: 400px;
   height: 500px;
   border-radius: 30px;
+  object-fit: cover;
 `
 
 const InfoContainer = styled.div`
