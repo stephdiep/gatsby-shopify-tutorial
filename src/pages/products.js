@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import styled from "styled-components"
 
 import Layout from "../components/layout"
+import Seo from "../components/seo"
 import ProductCard from "../components/ProductCard"
 
 const Products = ({ data }) => {
@@ -10,6 +11,7 @@ const Products = ({ data }) => {
 
 	return (
 		<Layout>
+			<Seo title="Products" />
 			<Wrapper>
 				{nodes?.map((product, index) => (<ProductCard key={index} product={product} />))}
 			</Wrapper>

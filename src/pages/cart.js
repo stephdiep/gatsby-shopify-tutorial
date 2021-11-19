@@ -4,6 +4,7 @@ import styled from "styled-components"
 import useStore from '../context/StoreContext'
 
 import Layout from '../components/layout'
+import Seo from "../components/seo"
 import ProductRow from '../components/ProductRow'
 import PrimaryButton from "../components/PrimaryButton"
 
@@ -12,6 +13,7 @@ const Cart = () => {
 
   return (
     <Layout>
+      <Seo title="My Cart" />
       <Wrapper>
         <HeaderWrapper>
           <Text>Product</Text>
