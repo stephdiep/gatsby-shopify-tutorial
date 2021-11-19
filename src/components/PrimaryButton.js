@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from "styled-components"
 
-const PrimaryButton = ({ text, onClick }) => {
+const PrimaryButton = ({ text, onClick, disabled = false }) => {
   return (
-    <ButtonWrapper onClick={onClick}>
+    <ButtonWrapper onClick={onClick} disabled={disabled}>
       <Title>{text}</Title>
     </ButtonWrapper>
   )
@@ -26,6 +26,12 @@ const ButtonWrapper = styled.button`
   :hover {
     transform: scale(1.2);
     transition: 0.2s;
+  }
+
+  :disabled {
+    background: rgba(1,76,64,0.5);
+    transform: none;
+    cursor: not-allowed;
   }
 `
 
