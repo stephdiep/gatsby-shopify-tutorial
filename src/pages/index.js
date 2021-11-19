@@ -1,5 +1,5 @@
-import { navigate } from "gatsby-link"
 import * as React from "react"
+import { navigate } from "gatsby-link"
 import styled from "styled-components"
 
 import Layout from "../components/layout"

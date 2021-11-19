@@ -23,9 +23,9 @@ const ProductTemplate = ({ pageContext }) => {
           <p>{product.description}</p>
           <InputForm>
             <Subtitle><label htmlFor="qty">Quantity:</label></Subtitle>
-            <Input placeholder="1" id="qty" type="number" defaultValue={1} {...bind} />
+            <Input placeholder="1" id="qty" type="number" {...bind} />
           </InputForm>
-          <PrimaryButton text="Add to cart" onClick={() => addVariantToCart(product.variants[0]?.shopifyId, bind.value)} />
+          <PrimaryButton text="Add to cart" onClick={() => addVariantToCart(product, bind.value)} />
         </InfoContainer>
       </Wrapper>
     </Layout>

@@ -8,7 +8,7 @@ const ProductCard = ({ product }) => {
 
   return (
     <Wrapper>
-      <AddButton onClick={() => addVariantToCart(product.variants[0]?.shopifyId, 1)}><p>+</p></AddButton>
+      <AddButton onClick={() => addVariantToCart(product, 1)}><p>+</p></AddButton>
       <ContentWrapper onClick={() => navigate(`${product.handle}`)}>
         <Image src={product.images[0]?.src} />
         <TextWrapper>

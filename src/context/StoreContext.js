@@ -15,11 +15,11 @@ const defaultValues = {
   loading: false,
   addVariantToCart: () => { },
   removeLineItem: () => { },
-  updateLineItem: () => { },
   client,
   checkout: {
     id: "",
     lineItems: [],
+    webUrl: ""
   },
 }
 
@@ -29,9 +29,9 @@ const isBrowser = typeof window !== `undefined`
 const localStorageKey = `shopify_checkout_id`
 
 export const StoreProvider = ({ children }) => {
+  const [cart, setCart] = useState(defaultValues.cart)
   const [checkout, setCheckout] = useState(defaultValues.checkout)
   const [loading, setLoading] = useState(false)
-  const [didJustAddToCart, setDidJustAddToCart] = useState(false)
 
   const setCheckoutItem = (checkout) => {
     if (isBrowser) {
@@ -68,7 +68,7 @@ export const StoreProvider = ({ children }) => {
     initializeCheckout()
   }, [])
 
-  const addVariantToCart = async (variantId, quantity) => {
+  const addVariantToCart = async (product, quantity) => {
     setLoading(true)
 
     if (checkout.id === "") {
@@ -77,19 +77,40 @@ export const StoreProvider = ({ children }) => {
     }
 
     const checkoutID = checkout.id
+    const variantId = product.variants[0]?.shopifyId
+    const parsedQuantity = parseInt(quantity, 10)
+
     const lineItemsToUpdate = [
       {
         variantId,
-        quantity: parseInt(quantity, 10),
+        quantity: parsedQuantity,
       },
     ]
 
     try {
       const res = await client.checkout.addLineItems(checkoutID, lineItemsToUpdate)
       setCheckout(res)
+
+      let updatedCart = []
+      if (cart.length > 0) {
+        const itemIsInCart = cart.find((item) => item.product.variants[0]?.shopifyId === variantId)
+
+        if (itemIsInCart) {
+          const newProduct = {
+            product: { ...itemIsInCart.product },
+            quantity: (itemIsInCart.quantity + parsedQuantity)
+          }
+          const otherItems = cart.filter((item) => item.product.variants[0]?.shopifyId !== variantId)
+          updatedCart = [...otherItems, newProduct]
+        } else {
+          updatedCart = cart.concat([{ product, quantity: parsedQuantity }])
+        }
+      } else {
+        updatedCart = [{ product, quantity: parsedQuantity }]
+      }
+      setCart(updatedCart)
+
       setLoading(false)
-      setDidJustAddToCart(true)
-      setTimeout(() => setDidJustAddToCart(false), 3000)
       alert("Item added to cart!")
     } catch (error) {
       setLoading(false)
@@ -97,32 +118,18 @@ export const StoreProvider = ({ children }) => {
     }
   }
 
-  const removeLineItem = async (checkoutID, lineItemID) => {
+  const removeLineItem = async (lineItemID) => {
     setLoading(true)
 
     try {
-      const res = await client.checkout.removeLineItems(checkoutID, [lineItemID])
+      const res = await client.checkout.removeLineItems(checkout.id, [lineItemID])
       setCheckout(res)
+      const updatedCart = cart.filter((item) => item.product.variants[0]?.shopifyId !== lineItemID)
+      setCart(updatedCart)
       setLoading(false)
     } catch (error) {
       setLoading(false)
       console.error(`Error in removeLineItem: ${error}`)
-    }
-  }
-
-  const updateLineItem = async (checkoutID, lineItemID, quantity) => {
-    setLoading(true)
-    const lineItemsToUpdate = [
-      { id: lineItemID, quantity: parseInt(quantity, 10) },
-    ]
-
-    try {
-      const res = await client.checkout.updateLineItems(checkoutID, lineItemsToUpdate)
-      setCheckout(res)
-      setLoading(false)
-    } catch (error) {
-      setLoading(false)
-      console.error(`Error in updateLineItem: ${error}`)
     }
   }
 
@@ -132,10 +139,9 @@ export const StoreProvider = ({ children }) => {
         ...defaultValues,
         addVariantToCart,
         removeLineItem,
-        updateLineItem,
+        cart,
         checkout,
         loading,
-        didJustAddToCart,
       }}
     >
       {children}
