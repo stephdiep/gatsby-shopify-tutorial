@@ -99,6 +99,7 @@ export const StoreProvider = ({ children }) => {
           const newProduct = {
             product: { ...itemIsInCart.product },
             quantity: (itemIsInCart.quantity + parsedQuantity)
+
           }
           const otherItems = cart.filter((item) => item.product.variants[0]?.shopifyId !== variantId)
           updatedCart = [...otherItems, newProduct]
@@ -118,13 +119,25 @@ export const StoreProvider = ({ children }) => {
     }
   }
 
-  const removeLineItem = async (lineItemID) => {
+  const removeLineItem = async (variantId) => {
     setLoading(true)
-
     try {
+      let lineItemID = ''
+      checkout.lineItems?.forEach((item) => {
+        if (item.variableValues.lineItems[0]?.variantId === variantId) {
+          lineItemID = item.id
+        }
+      })
+
+      if (!lineItemID) {
+        console.log('Product not in cart')
+        return
+      }
+
       const res = await client.checkout.removeLineItems(checkout.id, [lineItemID])
       setCheckout(res)
-      const updatedCart = cart.filter((item) => item.product.variants[0]?.shopifyId !== lineItemID)
+
+      const updatedCart = cart.filter((item) => item.product.variants[0]?.shopifyId !== variantId)
       setCart(updatedCart)
       setLoading(false)
     } catch (error) {
