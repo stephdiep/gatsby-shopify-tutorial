@@ -11,6 +11,6 @@ Follow the complete three-part tutorial here:
 - [Gatsby and Shopify Part 3](https://designcode.io/react-hooks-handbook-gatsby-shopify-3)
 
 View the live demo here: 
-- [Gatsby and Shopify live demo](gatsby-shopify-tutorial.netlify.app)
+- [Gatsby and Shopify live demo](https://gatsby-shopify-tutorial.netlify.app)
 
 <!-- AUTO-GENERATED-CONTENT:END -->
