@@ -91,6 +91,14 @@ const AddButton = styled.div`
   p {
     margin: 0;
     color: white;
+    text-align: center;
     font-weight: bold;
+    line-height: 0;
+
+    @media not all and (min-resolution:.001dpcm) { 
+      @supports (-webkit-appearance: none) {
+        margin-bottom: 5px;
+      }
+    }
   }
 `
