@@ -122,6 +122,8 @@ export const StoreProvider = ({ children }) => {
   const removeLineItem = async (variantId) => {
     setLoading(true)
     try {
+      if (checkout.lineItems.length < 1) throw new Error("Cart is empty")
+      
       let lineItemID = ''
       checkout.lineItems?.forEach((item) => {
         if (item.variableValues.lineItems[0]?.variantId === variantId) {
